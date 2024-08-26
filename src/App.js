@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import WeatherWidget from "./Component/weather/WeatherWidget";
+import Datafetcher from "./Component/Datafetcher/Datafetcher";
+import CounterProvider from "./Component/Context/CounterProvider";
+import { DisplayCounter, IncreaseCounter } from "./Component/Context/CounterComponent";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <WeatherWidget city="Hyderabad" temp="28" />
+      <Datafetcher />  */}
+      <CounterProvider>
+        <DisplayCounter />
+        <IncreaseCounter />
+      </CounterProvider>
     </div>
   );
 }
