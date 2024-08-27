@@ -3,8 +3,14 @@ import WeatherWidget from "./Component/weather/WeatherWidget";
 import Datafetcher from "./Component/Datafetcher/Datafetcher";
 import CounterProvider from "./Component/Context/CounterProvider";
 import { DisplayCounter, IncreaseCounter } from "./Component/Context/CounterComponent";
+import EventHandling from "./Component/EventHandling";
+import ControlledComponent from "./Component/ControlledComponent";
+import useFetch from "./Component/API/UseFecth";
 
 function App() {
+  const { data, loading, error } = useFetch("https://api.example.com/data");
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
   return (
     <div className="App">
       {/* <WeatherWidget city="Hyderabad" temp="28" />
@@ -13,6 +19,11 @@ function App() {
         <DisplayCounter />
         <IncreaseCounter />
       </CounterProvider>
+      <EventHandling/>
+      <ControlledComponent/>
+      {data.map(item => (
+        <div key={item.id}>{item.name}</div>
+      ))}
     </div>
   );
 }
