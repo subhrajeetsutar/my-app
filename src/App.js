@@ -7,6 +7,9 @@ import EventHandling from "./Component/EventHandling";
 import ControlledComponent from "./Component/ControlledComponent";
 import useFetch from "./Component/API/UseFecth";
 import Counter from "./Counter";
+import ThemeProvider from "./Component/Theme/ThemeProvider";
+import ThemeContext from "./Component/Theme/Context";
+import ThemeSwitcher from "./Component/Theme/ThemeSwitch";
 
 function App() {
   const { data, loading, error } = useFetch("https://api.example.com/data");
@@ -22,10 +25,16 @@ function App() {
       </CounterProvider>
       <EventHandling/>
       <ControlledComponent/> */}
-      <Counter/>
-      {data.map(item => (
+      {/* <Counter/> */}
+      {/* {data.map(item => (
         <div key={item.id}>{item.name}</div>
-      ))}
+      ))} */}
+      <ThemeProvider>
+    <div>
+      <h1>Theme Switcher Example</h1>
+      <ThemeSwitcher />  
+    </div>
+  </ThemeProvider>
     </div>
   );
 }
